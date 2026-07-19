@@ -1,0 +1,50 @@
+.doctor-page-wrapper {
+  min-height: 100vh;
+  background-color: #f4f7fb;
+  font-family: 'Manrope', sans-serif;
+  color: #1a1f36;
+}
+
+.doctor-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 256px; /* Width of DoctorSidebar */
+  min-height: 100vh;
+}
+
+.doctor-main {
+  flex: 1;
+  padding: 32px;
+  overflow-x: hidden;
+}
+
+.doctor-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.doctor-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e2e9;
+  border-top-color: #005596;
+  border-radius: 50%;
+  animation: doc-spin 1s linear infinite;
+}
+
+@keyframes doc-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1024px) {
+  .doctor-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .doctor-main {
+    padding: 24px 16px;
+  }
+}

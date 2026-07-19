@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.rating-stars-icons {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.rating-star {
+  color: var(--outline-variant);
+  line-height: 1;
+}
+
+.rating-star.filled {
+  color: #F59E0B;
+}
+
+.rating-star.half {
+  position: relative;
+  color: var(--outline-variant);
+}
+
+.rating-star.half::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #F59E0B;
+  overflow: hidden;
+  width: 50%;
+}
+
+/* Sizes */
+.rating-stars.sm .rating-star { font-size: 14px; }
+.rating-stars.sm .rating-value { font-size: 12px; }
+.rating-stars.sm .rating-count { font-size: 11px; }
+
+.rating-stars.md .rating-star { font-size: 18px; }
+.rating-stars.md .rating-value { font-size: 14px; }
+.rating-stars.md .rating-count { font-size: 13px; }
+
+.rating-stars.lg .rating-star { font-size: 24px; }
+.rating-stars.lg .rating-value { font-size: 16px; }
+.rating-stars.lg .rating-count { font-size: 14px; }
+
+.rating-value {
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-left: 4px;
+}
+
+.rating-count {
+  color: var(--color-secondary-text);
+  margin-left: 2px;
+}

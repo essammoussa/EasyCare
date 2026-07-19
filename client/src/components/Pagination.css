@@ -1,0 +1,102 @@
+/* Pagination.css — Shared pagination component */
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid var(--surface-container, #eceef5);
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.pagination-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 1px solid var(--outline, #e0e2e9);
+  border-radius: 8px;
+  background: var(--surface, #ffffff);
+  color: var(--color-primary-text, #1a1f36);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.pagination-nav-btn:hover:not(:disabled) {
+  border-color: var(--primary, #005596);
+  color: var(--primary, #005596);
+  background: rgba(0, 85, 150, 0.04);
+}
+
+.pagination-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-nav-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-num {
+  min-width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-secondary-text, #6B7280);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.pagination-num:hover:not(.active) {
+  background: var(--surface-container, #f1f5f9);
+  color: var(--color-primary-text, #1a1f36);
+}
+
+.pagination-num.active {
+  background: var(--primary, #005596);
+  color: white;
+  border-color: var(--primary, #005596);
+}
+
+.pagination-dots {
+  min-width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary-text, #6B7280);
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .pagination-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination-nav-btn span:not(.material-symbols-outlined) {
+    display: none;
+  }
+
+  .pagination-nav-btn {
+    padding: 8px 10px;
+  }
+}

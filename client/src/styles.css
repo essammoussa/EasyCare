@@ -1,0 +1,2584 @@
+/* ============================================
+   EasyCare — Global Design System Styles
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --primary: #005596;
+  --primary-container: #0a6ebd;
+  --on-primary: #ffffff;
+  --on-primary-container: #e6eeff;
+  --primary-fixed: #d3e4ff;
+  --primary-fixed-dim: #a1c9ff;
+
+  /* Secondary Colors */
+  --secondary: #006b58;
+  --secondary-container: #5ffbd6;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #00725e;
+  --secondary-fixed: #5ffbd6;
+  --secondary-fixed-dim: #38debb;
+
+  /* Tertiary Colors */
+  --tertiary: #854100;
+  --tertiary-container: #aa5400;
+  --tertiary-fixed: #ffdcc6;
+  --tertiary-fixed-dim: #ffb786;
+
+  /* Surface Colors */
+  --surface: #ffffff;
+  --surface-dim: #d8dae1;
+  --surface-bright: #f8f9ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f2f3fb;
+  --surface-container: #eceef5;
+  --surface-container-high: #e6e8ef;
+  --surface-container-highest: #e0e2e9;
+  --surface-variant: #e0e2e9;
+  --surface-tint: #0060a8;
+
+  /* On Colors */
+  --on-surface: #181c21;
+  --on-surface-variant: #414751;
+  --on-background: #181c21;
+
+  /* Inverse */
+  --inverse-surface: #2d3136;
+  --inverse-on-surface: #eff0f8;
+  --inverse-primary: #a1c9ff;
+
+  /* Outline */
+  --outline: #717782;
+  --outline-variant: #c1c7d3;
+
+  /* Semantic Colors */
+  --background: #F4F7FB;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --on-error-container: #93000a;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --color-primary-text: #1A1F36;
+  --color-secondary-text: #6B7280;
+  --admin-sidebar: #1A1F36;
+
+  /* Spacing */
+  --container-padding: 2rem;
+  --gutter: 1.5rem;
+  --section-gap: 3rem;
+  --card-inner-padding: 1.5rem;
+  --sidebar-width: 256px;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll; /* Prevents layout shift from scrollbar appearing/disappearing */
+}
+
+body {
+  font-family: 'DM Sans', 'Manrope', sans-serif;
+  background-color: var(--background);
+  color: var(--on-surface);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Sora', 'Manrope', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Spinner */
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--surface-container);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Message */
+.error-message {
+  background-color: var(--error-container);
+  color: var(--on-error-container);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* SR Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+  --background: #0b0f19;
+  --surface: #151f32;
+  --surface-dim: #0f172a;
+  --surface-bright: #1e293b;
+  --surface-container-lowest: #0b0f19;
+  --surface-container-low: #131b2e;
+  --surface-container: #1e293b;
+  --surface-container-high: #27374d;
+  --surface-container-highest: #354964;
+  --surface-variant: #27374d;
+  --surface-tint: #38bdf8;
+  --on-surface: #f1f5f9;
+  --on-surface-variant: #94a3b8;
+  --on-background: #f1f5f9;
+  --color-primary-text: #f8fafc;
+  --color-secondary-text: #94a3b8;
+  --outline: #384f6b;
+  --outline-variant: #27374d;
+  --primary-fixed: #1e293b;
+  --primary-fixed-dim: #131b2e;
+  --inverse-surface: #f1f5f9;
+  --inverse-on-surface: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --card-bg: #151f32;
+  --card-border: #27374d;
+}
+
+/* ===== GLOBAL PAGE BACKGROUNDS ===== */
+body.dark-theme {
+  background-color: #0b0f19;
+  color: #f1f5f9;
+}
+
+body.dark-theme .my-appointments-page,
+body.dark-theme .doctors-page,
+body.dark-theme .dashboard-page,
+body.dark-theme .doctor-profile-page,
+body.dark-theme .upload-results-page,
+body.dark-theme .my-records-page,
+body.dark-theme .map-search-page,
+body.dark-theme .doctor-page-wrapper,
+body.dark-theme .admin-layout-wrapper {
+  background-color: #0b0f19 !important;
+}
+
+/* ===== NAVBAR ===== */
+body.dark-theme .navbar {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-bottom-color: #1e293b !important;
+}
+
+body.dark-theme .navbar-brand-text,
+body.dark-theme .navbar-profile-name,
+body.dark-theme .navbar-link {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .navbar-link:hover,
+body.dark-theme .navbar-link.active {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.08) !important;
+}
+
+body.dark-theme .navbar-icon-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .navbar-icon-btn:hover {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .navbar-profile-trigger {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .navbar-profile-trigger:hover {
+  background: #27374d !important;
+}
+
+body.dark-theme .navbar-profile-id,
+body.dark-theme .navbar-profile-icon {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .navbar-profile-dropdown {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4) !important;
+}
+
+body.dark-theme .navbar-dropdown-item {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .navbar-dropdown-item:hover {
+  background: #27374d !important;
+}
+
+body.dark-theme .navbar-divider {
+  background: #27374d !important;
+}
+
+body.dark-theme .navbar-notification-dot {
+  border-color: #0f172a !important;
+}
+
+/* ===== DOCTOR / ADMIN SIDEBARS & HEADERS ===== */
+body.dark-theme .doctor-header,
+body.dark-theme .admin-header {
+  background-color: rgba(21, 31, 50, 0.95) !important;
+  border-bottom-color: #1e293b !important;
+}
+
+body.dark-theme .doctor-sidebar,
+body.dark-theme .admin-sidebar {
+  background-color: #111827 !important;
+  border-right-color: #1f2937 !important;
+}
+
+body.dark-theme .doctor-nav-link,
+body.dark-theme .admin-nav-link {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doctor-nav-link:hover,
+body.dark-theme .admin-nav-link:hover {
+  background-color: #1f2937 !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doctor-nav-link.active,
+body.dark-theme .admin-nav-link.active {
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doctor-header-icon-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doctor-header-icon-btn:hover {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doctor-sidebar-logo-text,
+body.dark-theme .admin-sidebar-logo-text {
+  color: #f1f5f9 !important;
+}
+
+/* ===== CARDS & PANELS ===== */
+body.dark-theme .stat-card,
+body.dark-theme .appointment-premium-card,
+body.dark-theme .doctor-premium-card,
+body.dark-theme .doc-appt-horizontal-card,
+body.dark-theme .doc-dash-stat-card,
+body.dark-theme .doc-dash-panel,
+body.dark-theme .admin-kpi-card,
+body.dark-theme .admin-table-wrap,
+body.dark-theme .admin-review-card,
+body.dark-theme .upload-dropzone,
+body.dark-theme .upload-right-card,
+body.dark-theme .search-bar-glass-card,
+body.dark-theme .profile-header-card,
+body.dark-theme .profile-info-card,
+body.dark-theme .profile-booking-card,
+body.dark-theme .profile-reviews-card,
+body.dark-theme .doctor-card {
+  background-color: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+
+body.dark-theme .doc-dash-panel-header {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .doc-dash-panel-header h3 {
+  color: #f1f5f9 !important;
+}
+
+/* Timeline cards fix (border-pending etc) */
+body.dark-theme .doc-dash-timeline-card {
+  background-color: #1a2740 !important;
+}
+
+body.dark-theme .doc-dash-timeline-card.border-confirmed {
+  background-color: rgba(0, 85, 150, 0.12) !important;
+}
+
+body.dark-theme .doc-dash-timeline-card.border-pending {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+}
+
+body.dark-theme .doc-dash-timeline-card.border-completed {
+  background-color: rgba(0, 107, 88, 0.08) !important;
+}
+
+body.dark-theme .doc-dash-timeline-card.border-cancelled {
+  background-color: rgba(239, 68, 68, 0.06) !important;
+}
+
+/* Mini action buttons */
+body.dark-theme .doc-dash-mini-action-btn {
+  background-color: #1e293b !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+/* Record items */
+body.dark-theme .doc-dash-record-item:hover {
+  background-color: #1a2740 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-dash-record-filename {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-dash-record-meta {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-dash-record-download-btn {
+  color: #384f6b !important;
+}
+
+body.dark-theme .doc-dash-record-item:hover .doc-dash-record-download-btn {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doctor-premium-card:hover,
+body.dark-theme .doc-appt-horizontal-card:hover,
+body.dark-theme .appointment-premium-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4) !important;
+  border-color: #384f6b !important;
+}
+
+/* ===== SEARCH BARS & FILTER BARS ===== */
+body.dark-theme .doc-appt-filter-bar {
+  background: rgba(21, 31, 50, 0.8) !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .search-input-wrapper {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .search-input-wrapper:focus-within {
+  border-color: #38bdf8 !important;
+  background: #27374d !important;
+}
+
+/* ===== TEXT OVERRIDES ===== */
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4,
+body.dark-theme .welcome-title,
+body.dark-theme .my-appointments-title,
+body.dark-theme .doctors-intro-title,
+body.dark-theme .doc-appt-title,
+body.dark-theme .upload-section-title,
+body.dark-theme .appointment-card-doctor-name,
+body.dark-theme .doctor-card-name,
+body.dark-theme .doc-appt-patient-name,
+body.dark-theme .profile-doctor-name,
+body.dark-theme .section-heading-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme p,
+body.dark-theme .my-appointments-subtitle,
+body.dark-theme .doctors-intro-subtitle,
+body.dark-theme .doc-appt-subtitle,
+body.dark-theme .welcome-subtitle,
+body.dark-theme .appointment-col-label,
+body.dark-theme .doc-appt-detail-label,
+body.dark-theme .stat-label,
+body.dark-theme .navbar-profile-id {
+  color: #94a3b8 !important;
+}
+
+/* ===== TABS ===== */
+body.dark-theme .my-appointments-tabs-container,
+body.dark-theme .doc-appt-tab-container {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .my-appointments-tab,
+body.dark-theme .doc-appt-tab-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .my-appointments-tab.active,
+body.dark-theme .doc-appt-tab-btn.active {
+  background: #27374d !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .my-appointments-tab:hover,
+body.dark-theme .doc-appt-tab-btn:hover {
+  color: #38bdf8 !important;
+}
+
+/* ===== INPUTS, SELECTS, TEXTAREAS ===== */
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #384f6b !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #64748b !important;
+}
+
+body.dark-theme input:focus,
+body.dark-theme select:focus,
+body.dark-theme textarea:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark-theme .doc-appt-select {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .search-inner-input,
+body.dark-theme .search-inner-select {
+  color: #f1f5f9 !important;
+  background: transparent !important;
+}
+
+/* ===== STATUS BADGES ===== */
+body.dark-theme .appointment-card-expanded-content,
+body.dark-theme .expanded-detail-box {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .expanded-detail-text {
+  color: #cbd5e1 !important;
+}
+
+/* ===== DOCTOR CARDS SPECIALTY & SLOTS ===== */
+body.dark-theme .doctor-card-specialty,
+body.dark-theme .specialty-badge-capsule {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doctor-card-clinic,
+body.dark-theme .doctor-card-experience,
+body.dark-theme .doctor-clinic-location,
+body.dark-theme .appointment-specialty-text,
+body.dark-theme .appointment-card-specialty-row {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doctor-card-slots {
+  background: rgba(56, 189, 248, 0.1) !important;
+  color: #38bdf8 !important;
+}
+
+/* ===== FOOTER ===== */
+body.dark-theme .footer,
+body.dark-theme footer {
+  background-color: #111827 !important;
+  border-top-color: #1f2937 !important;
+  color: #94a3b8 !important;
+}
+
+/* Footer brand, text and bottom bar */
+body.dark-theme .footer-brand-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .footer-tagline,
+body.dark-theme .footer-col ul li,
+body.dark-theme .footer-col a,
+body.dark-theme .footer-contact-item,
+body.dark-theme .footer-bottom p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .footer-col h4 {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .footer-col a:hover {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .footer-bottom {
+  border-top-color: #1f2937 !important;
+}
+
+body.dark-theme .footer-social-btn {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+  border: none !important;
+}
+
+body.dark-theme .footer-social-btn:hover {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .footer-social-btn .material-symbols-outlined {
+  color: inherit !important;
+}
+
+/* Footer contact icons */
+body.dark-theme .footer-contact-item .material-symbols-outlined {
+  color: var(--primary) !important;
+}
+
+/* ===== UPLOAD PAGE ===== */
+body.dark-theme .upload-results-page,
+body.dark-theme .upload-result-item {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .upload-result-item {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .upload-result-action:hover {
+  background: #27374d !important;
+}
+
+/* ===== PROFILE PAGE ===== */
+body.dark-theme .doctor-profile-page,
+body.dark-theme .profile-main-content {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .profile-hero-banner {
+  background: linear-gradient(135deg, #0d1b2e 0%, #1a2744 100%) !important;
+}
+
+body.dark-theme .profile-avatar-placeholder {
+  background: #27374d !important;
+}
+
+/* ===== QUICK STAT BADGES ===== */
+body.dark-theme .quick-stat-badge.bg-white,
+body.dark-theme .quick-stat-badge.shadow-sm {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .quick-stat-badge.bg-teal {
+  background: rgba(56, 189, 248, 0.1) !important;
+  border-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+body.dark-theme .badge-text-medium,
+body.dark-theme .badge-text-strong {
+  color: #f1f5f9 !important;
+}
+
+/* ===== MATERIAL ICONS ===== */
+/* Material Symbols default color in dark mode */
+body.dark-theme .material-symbols-outlined {
+  color: var(--on-surface) !important;
+}
+
+
+/* ========================================================
+   DARK MODE — MAP SEARCH PAGE
+   ======================================================== */
+body.dark-theme .map-page-wrapper {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .floating-filters-sidebar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #27374d !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .sidebar-overlay-header {
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .sidebar-overlay-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .filter-select {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .rating-chip-btn {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .rating-chip-btn.active {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .floating-search-bar-card,
+body.dark-theme .floating-btn-toggle-view,
+body.dark-theme .floating-btn-locate-me {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .floating-search-input {
+  background: transparent !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .floating-map-legend {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* Leaflet Dark Tiles */
+body.dark-theme .leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%) !important;
+}
+
+body.dark-theme .leaflet-container {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .leaflet-popup-content-wrapper,
+body.dark-theme .leaflet-popup-tip {
+  background: #151f32 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #27374d !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+
+body.dark-theme .map-popup-card {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .popup-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .popup-specialty,
+body.dark-theme .popup-availability {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .map-doctor-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .map-doctor-name,
+body.dark-theme .map-doctor-specialty {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .map-doctor-clinic,
+body.dark-theme .map-doctor-rating {
+  color: #94a3b8 !important;
+}
+
+
+/* ========================================================
+   DARK MODE — HOME / LANDING PAGE
+   ======================================================== */
+body.dark-theme .home-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .home-navbar {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-bottom-color: #1e293b !important;
+}
+
+body.dark-theme .home-navbar-brand {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .home-navbar-links a {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .home-navbar-links a:hover,
+body.dark-theme .home-navbar-links a.active {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .home-navbar-links a.active {
+  border-bottom-color: #38bdf8 !important;
+}
+
+body.dark-theme .home-navbar-signin {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .home-navbar-signin:hover {
+  background: #1e293b !important;
+}
+
+body.dark-theme .home-navbar-icons .material-symbols-outlined {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .home-navbar-icons .material-symbols-outlined:hover {
+  background: #1e293b !important;
+}
+
+body.dark-theme .home-mobile-toggle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .home-hero-badge {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .home-hero-btn-secondary:hover {
+  background: #1e293b !important;
+}
+
+body.dark-theme .home-hero-card {
+  background: rgba(21, 31, 50, 0.85) !important;
+  border-color: rgba(56, 189, 248, 0.15) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .home-search-input {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .home-search-input::placeholder {
+  color: #64748b !important;
+}
+
+body.dark-theme .home-hero-stat {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .home-hero-stat-value,
+body.dark-theme .home-hero-stat-label {
+  color: #f1f5f9 !important;
+}
+
+/* Home sections */
+body.dark-theme .home-section-dark {
+  background: #0f172a !important;
+}
+
+body.dark-theme .home-section-light,
+body.dark-theme section {
+  background: #0b0f19;
+}
+
+body.dark-theme .home-specialty-card,
+body.dark-theme .home-step-card,
+body.dark-theme .home-feature-card,
+body.dark-theme .home-testimonial-card,
+body.dark-theme .home-pricing-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .home-specialty-card:hover,
+body.dark-theme .home-feature-card:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.1) !important;
+}
+
+body.dark-theme .home-specialty-name,
+body.dark-theme .home-step-title,
+body.dark-theme .home-feature-title,
+body.dark-theme .home-testimonial-name,
+body.dark-theme .home-section-title,
+body.dark-theme .home-section-heading {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .home-specialty-count,
+body.dark-theme .home-step-desc,
+body.dark-theme .home-feature-desc,
+body.dark-theme .home-testimonial-text,
+body.dark-theme .home-section-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .home-step-number {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .home-cta-section {
+  background: linear-gradient(135deg, #0d1b2e 0%, #0f2d4a 100%) !important;
+}
+
+body.dark-theme .home-newsletter-input {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* ========================================================
+   DARK MODE — MEDICAL RECORDS PAGE
+   ======================================================== */
+body.dark-theme .records-page {
+  background: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .records-title,
+body.dark-theme .records-filter-label {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .records-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .records-filter-card {
+  background: rgba(21, 31, 50, 0.85) !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .records-filter-select,
+body.dark-theme .records-filter-input {
+  color: #f1f5f9 !important;
+  background: transparent !important;
+}
+
+body.dark-theme .records-item-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .records-item-header {
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .records-item-title,
+body.dark-theme .records-item-doctor,
+body.dark-theme .records-detail-value {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .records-item-date,
+body.dark-theme .records-detail-label,
+body.dark-theme .records-item-meta {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .records-item-body {
+  background: #1e293b !important;
+  border-top-color: #27374d !important;
+}
+
+/* ========================================================
+   DARK MODE — BOOK APPOINTMENT PAGE
+   ======================================================== */
+body.dark-theme .book-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .book-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .book-doctor-card,
+body.dark-theme .book-section-card,
+body.dark-theme .book-confirm-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .book-doctor-name,
+body.dark-theme .book-section-title,
+body.dark-theme .book-slot-label,
+body.dark-theme .book-confirm-label {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .book-doctor-specialty,
+body.dark-theme .book-section-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .book-slot-btn {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .book-slot-btn:hover,
+body.dark-theme .book-slot-btn.selected {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .book-notes-input {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* ========================================================
+   DARK MODE — MAP SEARCH PAGE
+   ======================================================== */
+body.dark-theme .map-page-wrapper {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .floating-filters-sidebar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #27374d !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .sidebar-overlay-header {
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .sidebar-overlay-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .map-filter-input,
+body.dark-theme .map-filter-select {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .map-doctor-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .map-doctor-name,
+body.dark-theme .map-doctor-specialty {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .map-doctor-clinic,
+body.dark-theme .map-doctor-rating {
+  color: #94a3b8 !important;
+}
+
+/* ========================================================
+   DARK MODE — UPLOAD RESULTS PAGE
+   ======================================================== */
+body.dark-theme .upload-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .upload-title,
+body.dark-theme .upload-section-title,
+body.dark-theme .upload-card-label,
+body.dark-theme .upload-result-name,
+body.dark-theme .upload-dropzone-heading,
+body.dark-theme .upload-form-heading,
+body.dark-theme .upload-form-label {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .upload-subtitle,
+body.dark-theme .upload-section-subtitle,
+body.dark-theme .upload-result-date,
+body.dark-theme .upload-help-text,
+body.dark-theme .upload-dropzone-meta {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .upload-dropzone {
+  background: #151f32 !important;
+  border-color: #384f6b !important;
+}
+
+body.dark-theme .upload-dropzone:hover,
+body.dark-theme .upload-dropzone.drag-active {
+  border-color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.05) !important;
+}
+
+body.dark-theme .upload-form-card,
+body.dark-theme .upload-right-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .upload-form-input,
+body.dark-theme .upload-form-select {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #384f6b !important;
+}
+
+body.dark-theme .upload-form-input:focus,
+body.dark-theme .upload-form-select:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark-theme .upload-result-card {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .upload-result-icon-box {
+  background: #27374d !important;
+}
+
+body.dark-theme .upload-result-action {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .upload-result-action:hover {
+  background: #27374d !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .upload-result-delete:hover {
+  background: rgba(220, 38, 38, 0.15) !important;
+  color: #f87171 !important;
+}
+
+/* ========================================================
+   DARK MODE — FORGOT PASSWORD / RESET PASSWORD PAGE
+   ======================================================== */
+body.dark-theme .forgot-page,
+body.dark-theme .reset-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .forgot-card,
+body.dark-theme .reset-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .forgot-title,
+body.dark-theme .reset-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .forgot-subtitle,
+body.dark-theme .reset-subtitle {
+  color: #94a3b8 !important;
+}
+
+/* ========================================================
+   DARK MODE — DOCTOR PROFILE PAGE (Patient view)
+   ======================================================== */
+body.dark-theme .doctor-profile-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .profile-container-wrapper {
+  background: transparent !important;
+}
+
+body.dark-theme .profile-header-card,
+body.dark-theme .profile-info-card,
+body.dark-theme .profile-booking-card,
+body.dark-theme .profile-reviews-card,
+body.dark-theme .profile-tab-content {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .profile-doctor-name,
+body.dark-theme .profile-tab-title,
+body.dark-theme .profile-detail-value,
+body.dark-theme .profile-slot-time {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .profile-doctor-specialty,
+body.dark-theme .profile-detail-label,
+body.dark-theme .profile-slot-date,
+body.dark-theme .review-card-author,
+body.dark-theme .review-card-date {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .profile-tab-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .profile-tab-btn.active {
+  color: #38bdf8 !important;
+  border-bottom-color: #38bdf8 !important;
+}
+
+body.dark-theme .profile-slot-btn {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .profile-slot-btn:hover,
+body.dark-theme .profile-slot-btn.selected {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .review-card {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .review-card-text {
+  color: #cbd5e1 !important;
+}
+
+/* ========================================================
+   DARK MODE — FOOTER & LOGOUT MODAL
+   ======================================================== */
+body.dark-theme .footer,
+body.dark-theme footer {
+  background: #111827 !important;
+  border-top-color: #1f2937 !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .footer-link,
+body.dark-theme .footer a {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .footer-link:hover,
+body.dark-theme .footer a:hover {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .logout-modal-backdrop {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-theme .logout-modal {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-theme .logout-modal h3 {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .logout-modal p {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .logout-modal-cancel {
+  color: var(--color-primary-text) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .logout-modal-cancel:hover {
+  background: var(--surface-container-low) !important;
+}
+
+body.dark-theme .notification-dropdown {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .notification-item {
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .notification-item:hover {
+  background: #27374d !important;
+}
+
+body.dark-theme .notification-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .notification-time,
+body.dark-theme .notification-text {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .notification-header {
+  background: #151f32 !important;
+  border-bottom-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* ========================================================
+   DARK MODE — SETTINGS PAGE
+   ======================================================== */
+body.dark-theme .settings-page {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .settings-card,
+body.dark-theme .settings-section {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .settings-title,
+body.dark-theme .settings-section-title,
+body.dark-theme .settings-label {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .settings-subtitle,
+body.dark-theme .settings-description {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .settings-input,
+body.dark-theme .settings-select {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* ========================================================
+   DARK MODE — DOCTOR PATIENT RECORDS PAGE
+   ======================================================== */
+body.dark-theme .doc-records-main {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .doc-records-sidebar,
+body.dark-theme .doc-records-quick-info-card,
+body.dark-theme .doc-records-widget,
+body.dark-theme .doc-records-tab-content-panel {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-records-sidebar-header {
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .doc-records-sidebar-header h2,
+body.dark-theme .doc-records-selected-name,
+body.dark-theme .doc-records-timeline-diag,
+body.dark-theme .doc-records-widget-item-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-records-selected-id,
+body.dark-theme .doc-records-selected-email,
+body.dark-theme .doc-records-timeline-date,
+body.dark-theme .doc-records-timeline-notes,
+body.dark-theme .doc-records-widget-item-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-records-search-box input {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-records-patient-card {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-records-patient-card:hover {
+  background: #1e2f4a !important;
+  border-color: #384f6b !important;
+}
+
+body.dark-theme .doc-records-patient-card.active {
+  background: rgba(56, 189, 248, 0.08) !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark-theme .doc-records-patient-info h3 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-records-patient-info p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-records-patient-card-footer {
+  border-top-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-records-prescription-tag {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-records-widget-item {
+  background: #1e293b !important;
+}
+
+body.dark-theme .doc-records-tab-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-records-tab-btn.active {
+  color: #38bdf8 !important;
+  border-bottom-color: #38bdf8 !important;
+}
+
+/* ========================================================
+   DARK MODE — DOCTOR DIAGNOSIS PAGE (Lighter palette)
+   ======================================================== */
+body.dark-theme .patient-summary-card,
+body.dark-theme .patient-history-card,
+body.dark-theme .diagnosis-form-card {
+  background: #1a2740 !important;
+  border-color: #2d3f5c !important;
+}
+
+body.dark-theme .patient-profile-name,
+body.dark-theme .form-section-title,
+body.dark-theme .form-label,
+body.dark-theme .patient-vital-value,
+body.dark-theme .history-item-value {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .patient-meta-text,
+body.dark-theme .patient-vital-label,
+body.dark-theme .history-item-desc,
+body.dark-theme .history-item-label {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .patient-vitals-list {
+  border-top-color: #2d3f5c !important;
+}
+
+body.dark-theme .patient-avatar-fallback {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .history-item-badge {
+  background: #1e293b !important;
+  border-left-color: #384f6b !important;
+}
+
+body.dark-theme .medicine-row {
+  background: #1e293b !important;
+  border-color: #2d3f5c !important;
+}
+
+body.dark-theme .medicine-input,
+body.dark-theme .form-textarea {
+  background: #151f32 !important;
+  border-color: #2d3f5c !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .medicine-input:focus,
+body.dark-theme .form-textarea:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15) !important;
+}
+
+/* ========================================================
+   DARK MODE — DOCTOR RESULTS PAGE
+   ======================================================== */
+body.dark-theme .doc-results-main {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .doc-results-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-results-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-filter-btn {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-filter-btn:hover {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+/* Stat cards */
+body.dark-theme .doc-results-stat-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-results-stat-label {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-stat-value {
+  color: #f1f5f9 !important;
+}
+
+/* Bento grid cards */
+body.dark-theme .doc-results-bento-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.dark-theme .doc-results-bento-card:hover {
+  border-color: #384f6b !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .doc-results-bento-patient-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-results-bento-patient-id {
+  color: #94a3b8 !important;
+}
+
+/* File row inside bento card */
+body.dark-theme .doc-results-file-row {
+  background-color: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-results-file-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-results-file-time {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-visibility-icon {
+  color: #384f6b !important;
+}
+
+body.dark-theme .doc-results-bento-card:hover .doc-results-visibility-icon {
+  color: #38bdf8 !important;
+}
+
+/* Validate button */
+body.dark-theme .doc-results-validate-btn {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-validate-btn:hover:not(:disabled) {
+  background: rgba(0, 107, 88, 0.2) !important;
+  border-color: var(--secondary) !important;
+  color: #5ffbd6 !important;
+}
+
+/* History panel */
+body.dark-theme .doc-results-history-panel {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-results-history-header {
+  background: rgba(30, 41, 59, 0.5) !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .doc-results-history-header h3 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-results-history-table th {
+  color: #94a3b8 !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .doc-results-history-table td {
+  color: #f1f5f9 !important;
+  border-bottom-color: #1e293b !important;
+}
+
+body.dark-theme .doc-results-history-row:hover {
+  background-color: #1e293b !important;
+}
+
+body.dark-theme .doc-results-filter-menu {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .doc-results-filter-menu button {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-filter-menu button:hover,
+body.dark-theme .doc-results-filter-menu button.active {
+  background: rgba(56, 189, 248, 0.08) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doc-results-section-title {
+  color: #f1f5f9 !important;
+}
+
+/* Table avatar & badges */
+body.dark-theme .doc-results-table-avatar {
+  background: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-results-more-btn {
+  color: #64748b !important;
+}
+
+body.dark-theme .doc-results-more-btn:hover {
+  background: #27374d !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .doc-results-table-empty {
+  color: #64748b !important;
+}
+
+
+/* ========================================================
+   DARK MODE — ADMIN LAYOUT (Sidebar + Header)
+   ======================================================== */
+body.dark-theme .admin-sidebar {
+  background-color: #111827 !important;
+  border-right-color: #1f2937 !important;
+}
+
+body.dark-theme .admin-nav-link {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .admin-nav-link:hover {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .admin-nav-link.active {
+  background: rgba(56, 189, 248, 0.1) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .admin-sidebar-logo-text h1 {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .admin-sidebar-logo-text p,
+body.dark-theme .admin-sidebar-section-label {
+  color: #64748b !important;
+}
+
+body.dark-theme .admin-header {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  border-bottom-color: #1f2937 !important;
+}
+
+body.dark-theme .admin-header-icon-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .admin-header-icon-btn:hover {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .admin-header-profile-text .name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .admin-header-profile-text .role {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .admin-header-divider {
+  background: #1f2937 !important;
+}
+
+body.dark-theme .admin-header-search {
+  background: #1e293b !important;
+}
+
+body.dark-theme .admin-header-search input {
+  color: #f1f5f9 !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN DASHBOARD PAGE
+   ======================================================== */
+body.dark-theme .admin-dashboard-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .dashboard-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .dashboard-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .btn-outline {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .btn-outline:hover {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+/* Stat Cards & Panels */
+body.dark-theme .kpi-card,
+body.dark-theme .activity-chart-card,
+body.dark-theme .bento-stat-card,
+body.dark-theme .activity-panel {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .stat-label {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .stat-card-top h3,
+body.dark-theme .kpi-value,
+body.dark-theme .chart-header h3,
+body.dark-theme .activity-panel-header h3,
+body.dark-theme .bento-stat-card h4 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .activity-panel-header {
+  border-bottom-color: #27374d !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN USERS PAGE
+   ======================================================== */
+body.dark-theme .admin-users-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .users-page-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .users-page-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .users-stat-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .users-table-container {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .table-controls {
+  background-color: #151f32 !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme .search-wrap {
+  background-color: #1e293b !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .search-wrap:focus-within {
+  background-color: #1e293b !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark-theme .search-wrap input {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .search-icon {
+  color: #64748b !important;
+}
+
+body.dark-theme table {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme thead tr {
+  background: #1e293b !important;
+}
+
+body.dark-theme th {
+  color: #94a3b8 !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme td {
+  color: #f1f5f9 !important;
+  border-bottom-color: #27374d !important;
+}
+
+body.dark-theme tbody tr:hover {
+  background: #1a2740 !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN DOCTORS PAGE
+   ======================================================== */
+body.dark-theme .admin-doctors-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doctors-page-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doctors-page-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doctors-stats-grid .stat-card,
+body.dark-theme .doctor-table-card,
+body.dark-theme .doctors-filter-card,
+body.dark-theme .doctor-list-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN APPOINTMENTS PAGE
+   ======================================================== */
+body.dark-theme .admin-appointments-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .appointments-page-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .appointments-page-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .appointments-table-card,
+body.dark-theme .appt-filter-card,
+body.dark-theme .appointments-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN REVIEWS PAGE
+   ======================================================== */
+body.dark-theme .admin-reviews-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .reviews-page-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .reviews-page-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .filter-pill-container {
+  background-color: #1e293b !important;
+}
+
+body.dark-theme .filter-pill-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .filter-pill-btn.active {
+  background: #27374d !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .review-admin-card,
+body.dark-theme .reviews-table-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN ANALYTICS PAGE
+   ======================================================== */
+body.dark-theme .admin-analytics-main {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .analytics-header h2 {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .analytics-header p {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .btn-outline-pill {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .analytics-card,
+body.dark-theme .analytics-chart-card,
+body.dark-theme .analytics-stat-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .analytics-metric-value {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .analytics-metric-label {
+  color: #94a3b8 !important;
+}
+
+/* ========================================================
+   DARK MODE — GENERIC ADMIN SHARED ELEMENTS
+   ======================================================== */
+/* Modal overlays */
+body.dark-theme .modal-overlay,
+body.dark-theme .admin-modal-overlay {
+  background: rgba(0, 0, 0, 0.65) !important;
+}
+
+body.dark-theme .modal-card,
+body.dark-theme .modal-box,
+body.dark-theme .admin-modal-content {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .admin-modal-header,
+body.dark-theme .admin-modal-footer {
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .admin-modal-header h3,
+body.dark-theme .admin-modal-body,
+body.dark-theme .modal-title {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .admin-modal-subtext,
+body.dark-theme .modal-subtitle,
+body.dark-theme .modal-description {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .admin-modal-close {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .admin-modal-close:hover:not(:disabled) {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .admin-modal-btn.cancel {
+  background: var(--surface-container-high) !important;
+  color: var(--color-primary-text) !important;
+}
+
+/* Inputs inside admin pages */
+body.dark-theme .admin-filter-input,
+body.dark-theme .admin-input,
+body.dark-theme .admin-select,
+body.dark-theme .filter-select {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+/* Pills / Badges */
+body.dark-theme .role-badge-admin {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .role-badge-doctor {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #34d399 !important;
+}
+
+body.dark-theme .role-badge-patient {
+  background: rgba(139, 92, 246, 0.12) !important;
+  color: #a78bfa !important;
+}
+
+/* Pagination */
+body.dark-theme .pagination-btn {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .pagination-btn.active,
+body.dark-theme .pagination-btn:hover {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+/* ========================================================
+   DARK MODE — ADMIN PAGES (complete overrides)
+   Replaces hardcoded white/grey cards & tables
+   ======================================================== */
+
+/* Shared admin page shells */
+body.dark-theme .admin-page-wrapper,
+body.dark-theme .admin-main,
+body.dark-theme .admin-dashboard-main,
+body.dark-theme .admin-doctors-main,
+body.dark-theme .admin-users-main,
+body.dark-theme .admin-appointments-main,
+body.dark-theme .admin-reviews-main,
+body.dark-theme .admin-analytics-main {
+  background-color: var(--background) !important;
+  color: var(--color-primary-text) !important;
+}
+
+/* Stat / KPI cards (all admin pages) */
+body.dark-theme .reviews-stat-card,
+body.dark-theme .doctors-stat-card,
+body.dark-theme .app-stat-card,
+body.dark-theme .analytics-stat-card,
+body.dark-theme .users-stat-card,
+body.dark-theme .kpi-card,
+body.dark-theme .bento-stat-card,
+body.dark-theme .activity-chart-card,
+body.dark-theme .chart-card,
+body.dark-theme .line-chart-card,
+body.dark-theme .bar-chart-card,
+body.dark-theme .geo-card,
+body.dark-theme .top-doctors-card,
+body.dark-theme .analytics-glass-card {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-primary-text) !important;
+  backdrop-filter: none !important;
+}
+
+body.dark-theme .reviews-stat-card h3,
+body.dark-theme .doctors-stat-card h3,
+body.dark-theme .app-stat-card h3,
+body.dark-theme .analytics-stat-card h3,
+body.dark-theme .users-stat-card h3,
+body.dark-theme .kpi-value,
+body.dark-theme .kpi-title,
+body.dark-theme .stat-card-top h3,
+body.dark-theme .bento-stat-card h4,
+body.dark-theme .chart-header h3,
+body.dark-theme .analytics-stat-card h3 {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .reviews-stat-card .stat-label,
+body.dark-theme .doctors-stat-card .stat-label,
+body.dark-theme .app-stat-label,
+body.dark-theme .stat-subtitle,
+body.dark-theme .stat-footer,
+body.dark-theme .kpi-title {
+  color: var(--color-secondary-text) !important;
+}
+
+/* Tables & containers */
+body.dark-theme .doctors-table-container,
+body.dark-theme .appointments-table-wrapper,
+body.dark-theme .users-table-container,
+body.dark-theme .table-responsive,
+body.dark-theme .advanced-filters-bar,
+body.dark-theme .doctors-table-header,
+body.dark-theme .doctors-pagination,
+body.dark-theme .table-controls,
+body.dark-theme .pagination-footer {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .doctors-table th,
+body.dark-theme .appointments-table th,
+body.dark-theme .users-table th {
+  background-color: var(--surface-container) !important;
+  color: var(--color-secondary-text) !important;
+  border-bottom-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .doctors-table td,
+body.dark-theme .appointments-table td,
+body.dark-theme .users-table td {
+  color: var(--color-primary-text) !important;
+  border-bottom-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .doctor-row:hover,
+body.dark-theme .appointments-table tbody tr:hover,
+body.dark-theme .users-table tbody tr:hover {
+  background-color: var(--surface-container-low) !important;
+}
+
+body.dark-theme .specialty-text,
+body.dark-theme .doctor-name,
+body.dark-theme .rating-value,
+body.dark-theme .appointments-value,
+body.dark-theme .patient-name,
+body.dark-theme .doc-name {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .clinic-text,
+body.dark-theme .doctor-id,
+body.dark-theme .patient-id,
+body.dark-theme .showing-text {
+  color: var(--color-secondary-text) !important;
+}
+
+/* Search & filters */
+body.dark-theme .search-input-wrapper,
+body.dark-theme .search-wrap,
+body.dark-theme .filter-group select,
+body.dark-theme .filter-group input,
+body.dark-theme .input-with-icon,
+body.dark-theme .advanced-filters-bar select,
+body.dark-theme .advanced-filters-bar input {
+  background-color: var(--surface-container) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .search-input-wrapper:focus-within,
+body.dark-theme .search-wrap:focus-within {
+  border-color: var(--surface-tint) !important;
+  background-color: var(--surface-container-high) !important;
+}
+
+body.dark-theme .search-input,
+body.dark-theme .search-wrap input {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .search-icon,
+body.dark-theme .advanced-filters {
+  color: var(--color-secondary-text) !important;
+}
+
+/* Review cards */
+body.dark-theme .review-card,
+body.dark-theme .empty-state {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .review-doctor-info {
+  background-color: var(--surface-container) !important;
+}
+
+body.dark-theme .patient-info h4,
+body.dark-theme .doc-name p,
+body.dark-theme .review-comment {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .patient-info p,
+body.dark-theme .review-date {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .review-card-footer {
+  border-top-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .filter-pill-container {
+  background-color: var(--surface-container) !important;
+}
+
+body.dark-theme .filter-pill-btn.active {
+  background: var(--surface-container-high) !important;
+  color: var(--surface-tint) !important;
+  box-shadow: none !important;
+}
+
+body.dark-theme .btn-load-more,
+body.dark-theme .btn-outline,
+body.dark-theme .btn-outline-pill,
+body.dark-theme .btn-outline-full {
+  background: var(--surface-container) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .btn-load-more:hover,
+body.dark-theme .btn-outline:hover,
+body.dark-theme .btn-outline-pill:hover {
+  background: var(--surface-container-high) !important;
+  border-color: var(--surface-tint) !important;
+  color: var(--surface-tint) !important;
+}
+
+body.dark-theme .page-nav-btn,
+body.dark-theme .page-num-btn {
+  background: var(--surface-container) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .page-num-btn.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--on-primary) !important;
+}
+
+/* Analytics charts & progress */
+body.dark-theme .chart-area,
+body.dark-theme .bar-chart-content,
+body.dark-theme .chart-empty-state {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .progress-track {
+  background-color: var(--surface-container) !important;
+}
+
+body.dark-theme .progress-labels span {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .range-dropdown {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .range-option {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .range-option:hover,
+body.dark-theme .range-option.active {
+  background: var(--surface-container-high) !important;
+  color: var(--surface-tint) !important;
+}
+
+body.dark-theme .analytics-tooltip {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .top-docs-table th,
+body.dark-theme .top-doctors-table th {
+  background: var(--surface-container) !important;
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .top-docs-table td,
+body.dark-theme .top-doctors-table td {
+  color: var(--color-primary-text) !important;
+  border-bottom-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .top-doc-name {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .geo-header,
+body.dark-theme .geo-legend {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .geo-header h4,
+body.dark-theme .geo-legend-item h5 {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .geo-header p,
+body.dark-theme .geo-legend-item p {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .geo-map-area {
+  background-color: var(--surface-container-low) !important;
+}
+
+/* Side drawer (doctors) */
+body.dark-theme .side-drawer,
+body.dark-theme .drawer-header,
+body.dark-theme .drawer-footer {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .drawer-content,
+body.dark-theme .analytics-card {
+  background: transparent !important;
+}
+
+body.dark-theme .analytics-card {
+  background-color: var(--surface-container) !important;
+}
+
+body.dark-theme .detail-row {
+  border-bottom-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .detail-row .label {
+  color: var(--color-secondary-text) !important;
+}
+
+body.dark-theme .detail-row .value {
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .stat-divider {
+  background-color: var(--outline-variant) !important;
+}
+
+/* Icon tint utility classes — dark mode */
+body.dark-theme .bg-primary-light { background-color: rgba(56, 189, 248, 0.12) !important; }
+body.dark-theme .bg-secondary-light { background-color: rgba(16, 185, 129, 0.12) !important; }
+body.dark-theme .bg-tertiary-light { background-color: rgba(245, 158, 11, 0.12) !important; }
+body.dark-theme .bg-warning-light { background-color: rgba(245, 158, 11, 0.12) !important; }
+body.dark-theme .bg-light-blue { background-color: rgba(56, 189, 248, 0.12) !important; }
+body.dark-theme .bg-light-amber { background-color: rgba(245, 158, 11, 0.12) !important; }
+body.dark-theme .bg-light-teal { background-color: rgba(16, 185, 129, 0.12) !important; }
+body.dark-theme .bg-light-red { background-color: rgba(239, 68, 68, 0.12) !important; }
+body.dark-theme .bg-pale-blue { background-color: rgba(56, 189, 248, 0.12) !important; }
+body.dark-theme .bg-pale-amber { background-color: rgba(245, 158, 11, 0.15) !important; }
+body.dark-theme .bg-pale-teal { background-color: rgba(16, 185, 129, 0.15) !important; }
+body.dark-theme .bg-pale-red { background-color: rgba(239, 68, 68, 0.15) !important; }
+
+body.dark-theme .color-primary-text { color: #38bdf8 !important; }
+body.dark-theme .color-secondary-text { color: #34d399 !important; }
+body.dark-theme .color-tertiary-text { color: #fbbf24 !important; }
+body.dark-theme .color-warning-text { color: #fbbf24 !important; }
+body.dark-theme .color-danger-text { color: #f87171 !important; }
+body.dark-theme .color-slate-medium { color: var(--color-secondary-text) !important; }
+
+/* Global icon inheritance in dark mode */
+body.dark-theme .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: var(--on-surface) !important;
+}
+
+body.dark-theme .admin-nav-link .material-symbols-outlined,
+body.dark-theme .doctor-nav-link .material-symbols-outlined,
+body.dark-theme .admin-sidebar-bottom-link .material-symbols-outlined,
+body.dark-theme .doctor-sidebar-bottom-link .material-symbols-outlined {
+  color: inherit;
+}
+
+body.dark-theme .stat-icon-square .material-symbols-outlined,
+body.dark-theme .app-icon-wrap .material-symbols-outlined,
+body.dark-theme .icon-wrap .material-symbols-outlined,
+body.dark-theme .action-btn .material-symbols-outlined,
+body.dark-theme .appointment-col-icon-box .material-symbols-outlined,
+body.dark-theme .appointment-card-specialty-row .material-symbols-outlined,
+body.dark-theme .doc-appt-detail-icon .material-symbols-outlined,
+body.dark-theme .doc-appt-type-tag .material-symbols-outlined,
+body.dark-theme .bento-icon-wrap .material-symbols-outlined,
+body.dark-theme .activity-badge .material-symbols-outlined,
+body.dark-theme .activity-avatar .material-symbols-outlined {
+  color: inherit !important;
+}
+
+/* Admin dashboard KPI icons & backgrounds in dark mode */
+body.dark-theme .kpi-icon-wrap.bg-blue {
+  background-color: rgba(56, 189, 248, 0.15) !important;
+}
+body.dark-theme .kpi-icon-wrap.bg-teal {
+  background-color: rgba(52, 211, 153, 0.15) !important;
+}
+body.dark-theme .kpi-icon-wrap.bg-indigo {
+  background-color: rgba(129, 140, 248, 0.15) !important;
+}
+body.dark-theme .kpi-icon-wrap.bg-amber {
+  background-color: rgba(251, 191, 36, 0.15) !important;
+}
+
+body.dark-theme .kpi-icon-wrap .material-symbols-outlined.text-blue {
+  color: #38bdf8 !important;
+}
+body.dark-theme .kpi-icon-wrap .material-symbols-outlined.text-teal {
+  color: #34d399 !important;
+}
+body.dark-theme .kpi-icon-wrap .material-symbols-outlined.text-indigo {
+  color: #818cf8 !important;
+}
+body.dark-theme .kpi-icon-wrap .material-symbols-outlined.text-amber {
+  color: #fbbf24 !important;
+}
+
+
+/* Remove rogue white utility classes */
+body.dark-theme .bg-white {
+  background-color: var(--surface) !important;
+  color: var(--color-primary-text) !important;
+}
+
+body.dark-theme .admin-confirm-modal {
+  background: var(--surface) !important;
+  color: var(--color-primary-text) !important;
+
+/* Ensure utilities that force white still display correctly in dark theme */
+body.dark-theme .text-white {
+  color: var(--on-surface) !important;
+}
+}
+
+body.dark-theme .activity-panel {
+  background: var(--surface) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+body.dark-theme .activity-item:hover {
+  background: var(--surface-container-low) !important;
+}
+
+body.dark-theme .no-activity {
+  color: var(--color-secondary-text) !important;
+}
+
+
+/* ========================================================
+   DARK MODE — DOCTOR STATS PAGE
+   ======================================================== */
+body.dark-theme .doc-stats-main {
+  background: #0b0f19 !important;
+}
+
+body.dark-theme .doc-stats-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-stats-subtitle {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-stats-kpi-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-stats-kpi-label,
+body.dark-theme .doc-stats-kpi-meta {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-stats-kpi-value {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-stats-chart-card {
+  background: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-stats-chart-title {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-stats-range-btn {
+  background: #1a2740 !important;
+  border-color: #27374d !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-stats-range-menu {
+  background: #1e293b !important;
+  border-color: #27374d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .doc-stats-range-menu button {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .doc-stats-range-menu button:hover,
+body.dark-theme .doc-stats-range-menu button.active {
+  background: rgba(56, 189, 248, 0.08) !important;
+  color: #38bdf8 !important;
+}
+
+/* ========================================================
+   DARK MODE — DOCTOR APPOINTMENTS PAGE (horizontal cards)
+   ======================================================== */
+body.dark-theme .doc-appt-horizontal-card {
+  background-color: #151f32 !important;
+  border-color: #27374d !important;
+}
+
+body.dark-theme .doc-appt-patient-name,
+body.dark-theme .doc-appt-reason {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-appt-detail-label,
+body.dark-theme .doc-appt-detail-value {
+  color: #94a3b8 !important;
+}
+
+/* Search input inside filter bar */
+body.dark-theme .doc-appt-search-wrapper input {
+  background-color: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-appt-search-wrapper input::placeholder {
+  color: #64748b !important;
+}
+
+body.dark-theme .doc-appt-select {
+  background-color: #1e293b !important;
+  border-color: #27374d !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .doc-appt-tab-btn.active {
+  background-color: #27374d !important;
+}
+
