@@ -5,7 +5,7 @@ import DoctorHeader from '../../components/DoctorHeader';
 import './Doctor.css';
 import './DoctorResults.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run';
 
 export default function DoctorResults() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

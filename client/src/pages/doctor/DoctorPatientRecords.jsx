@@ -186,7 +186,7 @@ export default function DoctorPatientRecords() {
                         <div className="doc-records-patient-card-body">
                           {p.profilePicture ? (
                             <img 
-                              src={p.profilePicture.startsWith('http') ? p.profilePicture : `http://localhost:5000${p.profilePicture}`} 
+                              src={p.profilePicture.startsWith('http') ? p.profilePicture : `${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}${p.profilePicture}`} 
                               alt={p.name} 
                               className="doc-records-patient-avatar"
                             />

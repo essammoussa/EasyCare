@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import 'leaflet/dist/leaflet.css';
 import './MapSearch.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run';
 const DEFAULT_CENTER = [30.0444, 31.2357]; // Cairo Downtown
 
 // Fix for default Leaflet icon paths in builds

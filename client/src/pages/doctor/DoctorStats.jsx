@@ -10,7 +10,7 @@ import DoctorHeader from '../../components/DoctorHeader';
 import './Doctor.css';
 import './DoctorStats.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run';
 
 const VISIT_COLORS = ['#005596', '#006b58', '#EF4444'];
 const RANGE_OPTIONS = [

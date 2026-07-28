@@ -353,7 +353,7 @@ export default function MedicalRecords() {
                                                                             <p className="result-name">{res.testName}</p>
                                                                             {res.fileUrl && (
                                                                                 <a
-                                                                                    href={`http://localhost:5000/${res.fileUrl.replace(/\\/g, '/')}`}
+                                                                                    href={`${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}/${res.fileUrl.replace(/\\/g, '/')}`}
                                                                                     target="_blank"
                                                                                     rel="noopener noreferrer"
                                                                                     className="result-download-link"

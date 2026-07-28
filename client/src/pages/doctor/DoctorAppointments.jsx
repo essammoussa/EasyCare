@@ -254,7 +254,7 @@ export default function DoctorAppointments() {
                       <div className="doc-appt-card-left">
                         {appt.patientId?.profilePicture ? (
                           <img 
-                            src={appt.patientId.profilePicture.startsWith('http') ? appt.patientId.profilePicture : `http://localhost:5000${appt.patientId.profilePicture}`} 
+                            src={appt.patientId.profilePicture.startsWith('http') ? appt.patientId.profilePicture : `${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}${appt.patientId.profilePicture}`} 
                             alt="Patient Avatar" 
                             className="doc-appt-patient-img"
                           />

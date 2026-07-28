@@ -134,7 +134,7 @@ export default function Navbar() {
               <img
                 alt="User Avatar"
                 className="navbar-profile-avatar"
-                src={user.profilePicture.startsWith('http') ? user.profilePicture : `http://localhost:5000${user.profilePicture}`}
+                src={user.profilePicture.startsWith('http') ? user.profilePicture : `${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}${user.profilePicture}`}
               />
             ) : (
               <div className="navbar-profile-avatar-fallback">

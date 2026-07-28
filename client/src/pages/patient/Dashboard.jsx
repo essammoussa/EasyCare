@@ -154,7 +154,7 @@ export default function Dashboard() {
                     const specialty = doc?.specialty || 'General Practitioner';
                     const avatarPath = doc?.userId?.profilePicture || '';
                     const avatar = avatarPath
-                      ? (avatarPath.startsWith('http') ? avatarPath : `http://localhost:5000${avatarPath}`)
+                      ? (avatarPath.startsWith('http') ? avatarPath : `${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}${avatarPath}`)
                       : null;
                     const appointmentDate = appointment.bookingId?.bookedAt || appointment.createdAt;
                     const appointmentTime = appointment.bookingId?.slotId?.startTime || null;

@@ -39,8 +39,8 @@ export function ChatProvider({ children }) {
     if (!user?._id || !token) return;
 
     // Connect to the server passing the token via handshake auth
-    socketRef.current = io('http://localhost:5000', {
-      auth: { token }
+    socketRef.current = io(import.meta.env.VITE_SOCKET_URL || 'https://easycare-api.bonto.run', {
+      auth: { token },
     });
 
     // Listen for incoming messages broadcasted from the server

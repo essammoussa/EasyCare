@@ -184,7 +184,7 @@ export default function DoctorProfile() {
   const specialty = doctor.specialty || 'General Practitioner';
   const avatarPath = doctor.userId?.profilePicture || '';
   const avatar = avatarPath
-    ? (avatarPath.startsWith('http') ? avatarPath : `http://localhost:5000${avatarPath}`)
+    ? (avatarPath.startsWith('http') ? avatarPath : `${import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run'}${avatarPath}`)
     : null;
   const experience = doctor.experience || 5;
   const clinicName = doctor.clinic || 'City Health Center';

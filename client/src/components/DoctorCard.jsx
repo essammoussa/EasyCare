@@ -16,8 +16,9 @@ export default function DoctorCard({ doctor }) {
 
   const name = userId?.name || 'Doctor';
   const avatarPath = userId?.profilePicture || '';
+  const API_BASE = import.meta.env.VITE_API_BASE || 'https://easycare-api.bonto.run';
   const avatar = avatarPath
-    ? (avatarPath.startsWith('http') ? avatarPath : `http://localhost:5000${avatarPath}`)
+    ? (avatarPath.startsWith('http') ? avatarPath : `${API_BASE}${avatarPath}`)
     : null;
   const slotsCount = typeof availableSlots === 'number' ? availableSlots : (Array.isArray(availableSlots) ? availableSlots.length : 0);
 
