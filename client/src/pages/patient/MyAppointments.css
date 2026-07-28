@@ -81,6 +81,21 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(0, 85, 150, 0.1);
+  color: #005596;
+  margin-left: 6px;
+}
+
 /* Appointment List Grid */
 .my-appointments-grid {
   display: grid;
@@ -328,6 +343,14 @@
 }
 .appointment-status-badge.status-cancelled .status-badge-dot {
   background: #EF4444;
+}
+
+.appointment-status-badge.status-expired {
+  background: #f1f5f9;
+  color: #64748b;
+}
+.appointment-status-badge.status-expired .status-badge-dot {
+  background: #64748b;
 }
 
 /* Buttons group */

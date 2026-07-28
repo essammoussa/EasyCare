@@ -76,7 +76,13 @@ export default function BookAppointment() {
   };
 
   const name = doctor?.userId?.name || 'Doctor';
-  const availableDates = [...new Set(slots.map((slot) => slot.date).filter(Boolean))].sort();
+  // Get today's date string for filtering
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  // Only show dates that are today or in the future
+  const availableDates = [...new Set(slots.map((slot) => slot.date).filter(Boolean))]
+    .filter((d) => d >= todayStr)
+    .sort();
   const visibleSlots = slots.filter((slot) => slot.date === selectedDate);
   const formatDateLabel = (value) => {
     if (!value) return '';
@@ -118,6 +124,7 @@ export default function BookAppointment() {
                       type="date"
                       className="book-date-input"
                       value={selectedDate}
+                      min={todayStr}
                       onChange={(e) => {
                         setSelectedDate(e.target.value);
                         setSelectedSlot(null);

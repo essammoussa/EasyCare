@@ -10,12 +10,17 @@ const http = require('http');
 const { Server } = require('socket.io');
 const connectDB = require('./config/db');
 const initializeSocket = require('./socket');
+const { runDailySlotMaintenance } = require('./services/slotService');
 
 // Load environment variables from .env file
 dotenv.config();
 
-// Connect to MongoDB database
-connectDB();
+// Connect to MongoDB database, then run daily slot maintenance
+connectDB().then(() => {
+  runDailySlotMaintenance();
+  // Re-run every 24 hours for long-running servers
+  setInterval(runDailySlotMaintenance, 24 * 60 * 60 * 1000);
+});
 
 const app = express();
 const server = http.createServer(app);

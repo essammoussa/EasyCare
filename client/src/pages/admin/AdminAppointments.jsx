@@ -188,6 +188,7 @@ export default function AdminAppointments() {
       case 'pending': return 'status-badge-pending';
       case 'completed': return 'status-badge-completed';
       case 'cancelled': return 'status-badge-cancelled';
+      case 'expired': return 'status-badge-expired';
       default: return 'status-badge-pending';
     }
   };
@@ -288,6 +289,7 @@ export default function AdminAppointments() {
                     <option>Confirmed</option>
                     <option>Completed</option>
                     <option>Cancelled</option>
+                    <option>Expired</option>
                   </select>
                 </div>
                 <div className="filter-group">
@@ -466,6 +468,7 @@ export default function AdminAppointments() {
             <option value="confirmed">Confirmed</option>
             <option value="completed">Completed</option>
             <option value="cancelled">Cancelled</option>
+            <option value="expired">Expired</option>
           </select>
         </div>
         <div className="admin-form-group">

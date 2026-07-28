@@ -315,6 +315,15 @@
   color: var(--error, #ba1a1a);
 }
 
+.doc-appt-detail-icon.status-expired {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+}
+
+.doc-appt-detail-value.status-text-expired {
+  color: #64748b;
+}
+
 /* Card Right - Actions Buttons */
 .doc-appt-card-right {
   display: flex;

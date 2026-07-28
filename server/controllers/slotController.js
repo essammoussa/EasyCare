@@ -33,17 +33,26 @@ const createSlot = async (req, res) => {
 
 // GET /api/slots/:doctorId
 // Get all available (unbooked) time slots for a specific doctor
-// Used by patients to see when they can book an appointment
+// Only returns slots for today or future dates
 const getAvailableSlots = async (req, res) => {
   try {
     const { date } = req.query;
 
+    // Get today's date string for filtering out past slots
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
     const query = {
       doctorId: req.params.doctorId,
       isBooked: false,
+      date: { $gte: todayStr }, // Only today and future dates
     };
 
     if (date) {
+      // If a specific date is requested, still ensure it's not in the past
+      if (date < todayStr) {
+        return res.status(200).json([]);
+      }
       query.date = date;
     }
 

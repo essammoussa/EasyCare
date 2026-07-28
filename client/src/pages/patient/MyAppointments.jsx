@@ -74,12 +74,13 @@ export default function MyAppointments() {
   };
 
   const getFilteredAppointments = () => {
-    const now = new Date();
     if (activeTab === 'upcoming') {
       return appointments.filter(
         (a) => (a.status === 'confirmed' || a.status === 'pending')
       );
     } else if (activeTab === 'past') {
+      return appointments.filter((a) => a.status === 'expired');
+    } else if (activeTab === 'completed') {
       return appointments.filter((a) => a.status === 'completed');
     } else if (activeTab === 'cancelled') {
       return appointments.filter((a) => a.status === 'cancelled');
@@ -91,7 +92,8 @@ export default function MyAppointments() {
 
   const counts = {
     upcoming: appointments.filter(a => a.status === 'confirmed' || a.status === 'pending').length,
-    past: appointments.filter(a => a.status === 'completed').length,
+    past: appointments.filter(a => a.status === 'expired').length,
+    completed: appointments.filter(a => a.status === 'completed').length,
     cancelled: appointments.filter(a => a.status === 'cancelled').length,
   };
 
@@ -148,19 +150,25 @@ export default function MyAppointments() {
               className={`my-appointments-tab ${activeTab === 'upcoming' ? 'active' : ''}`}
               onClick={() => setActiveTab('upcoming')}
             >
-              Upcoming
+              Upcoming {counts.upcoming > 0 && <span className="tab-count">{counts.upcoming}</span>}
             </button>
             <button 
               className={`my-appointments-tab ${activeTab === 'past' ? 'active' : ''}`}
               onClick={() => setActiveTab('past')}
             >
-              Past
+              Past {counts.past > 0 && <span className="tab-count">{counts.past}</span>}
+            </button>
+            <button 
+              className={`my-appointments-tab ${activeTab === 'completed' ? 'active' : ''}`}
+              onClick={() => setActiveTab('completed')}
+            >
+              Completed {counts.completed > 0 && <span className="tab-count">{counts.completed}</span>}
             </button>
             <button 
               className={`my-appointments-tab ${activeTab === 'cancelled' ? 'active' : ''}`}
               onClick={() => setActiveTab('cancelled')}
             >
-              Cancelled
+              Cancelled {counts.cancelled > 0 && <span className="tab-count">{counts.cancelled}</span>}
             </button>
           </div>
         </div>
@@ -262,7 +270,7 @@ export default function MyAppointments() {
                             {cancellingId === appt._id ? 'Cancelling...' : 'Cancel'}
                           </button>
                         )}
-                        {(appt.status === 'completed' || appt.status === 'cancelled') && (
+                        {(appt.status === 'completed' || appt.status === 'cancelled' || appt.status === 'expired') && (
                           <button 
                             className="appointment-btn-cancel-action"
                             style={{ borderColor: '#ef4444', color: '#ef4444' }}

@@ -132,9 +132,9 @@ const deleteAppointment = async (req, res) => {
       return res.status(404).json({ message: 'Appointment not found' });
     }
 
-    // Only completed or cancelled appointments can be deleted
-    if (!['completed', 'cancelled'].includes(appointment.status)) {
-      return res.status(400).json({ message: 'Only completed or cancelled appointments can be deleted' });
+    // Only completed, cancelled, or expired appointments can be deleted
+    if (!['completed', 'cancelled', 'expired'].includes(appointment.status)) {
+      return res.status(400).json({ message: 'Only completed, cancelled, or expired appointments can be deleted' });
     }
 
     // Patient can only delete their own cancelled appointments

@@ -18,7 +18,7 @@ export default function DoctorAppointments() {
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, appointmentId: null });
 
   // Filter and Sort states
-  const [dateTab, setDateTab] = useState('upcoming'); // 'upcoming', 'past'
+  const [dateTab, setDateTab] = useState('upcoming'); // 'upcoming', 'past', 'completed', 'cancelled'
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name'); // 'name', 'age'
@@ -72,13 +72,16 @@ export default function DoctorAppointments() {
   };
 
   // Filter Logic
-  // Upcoming = pending or confirmed; Past = completed (cancelled shown in both with filter)
   const filteredAppointments = appointments.filter((appt) => {
     // 1. Tab Filtering by status
     if (dateTab === 'upcoming') {
-      if (appt.status === 'completed') return false;
+      if (appt.status !== 'pending' && appt.status !== 'confirmed') return false;
     } else if (dateTab === 'past') {
+      if (appt.status !== 'expired') return false;
+    } else if (dateTab === 'completed') {
       if (appt.status !== 'completed') return false;
+    } else if (dateTab === 'cancelled') {
+      if (appt.status !== 'cancelled') return false;
     }
 
     // 2. Search Query Filtering (Patient name)
@@ -155,6 +158,18 @@ export default function DoctorAppointments() {
                 onClick={() => setDateTab('past')}
               >
                 Past
+              </button>
+              <button 
+                className={`doc-appt-tab-btn ${dateTab === 'completed' ? 'active' : ''}`}
+                onClick={() => setDateTab('completed')}
+              >
+                Completed
+              </button>
+              <button 
+                className={`doc-appt-tab-btn ${dateTab === 'cancelled' ? 'active' : ''}`}
+                onClick={() => setDateTab('cancelled')}
+              >
+                Cancelled
               </button>
             </div>
           </div>
@@ -276,7 +291,8 @@ export default function DoctorAppointments() {
                             <span className="material-symbols-outlined">
                               {appt.status === 'confirmed' ? 'check_circle' : 
                                appt.status === 'completed' ? 'task_alt' :
-                               appt.status === 'cancelled' ? 'cancel' : 'pending'}
+                               appt.status === 'cancelled' ? 'cancel' :
+                               appt.status === 'expired' ? 'timer_off' : 'pending'}
                             </span>
                           </div>
                           <div>
@@ -329,7 +345,7 @@ export default function DoctorAppointments() {
                             </button>
                           </>
                         )}
-                        {appt.status === 'cancelled' && (
+                        {(appt.status === 'cancelled' || appt.status === 'expired') && (
                           <button 
                             className="doc-appt-action-solid cancel"
                             onClick={() => handleDeleteClick(appt._id)}
