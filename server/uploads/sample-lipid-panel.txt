@@ -1,0 +1,12 @@
+EasyCare Lab Report
+===================
+Test Name: Test
+Patient: Essam
+Doctor: Dr. Khaled Mansour
+Date: 6/7/2026
+
+Results:
+- Cholesterol: 190 mg/dL (Normal)
+- Triglycerides: 130 mg/dL (Normal)
+- HDL: 50 mg/dL (Good)
+- LDL: 114 mg/dL (Optimal)
